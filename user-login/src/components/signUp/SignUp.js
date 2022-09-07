@@ -22,14 +22,19 @@ const SignUp = () => {
   };
 
   const signup = () => {
+    let pattern = /[a-z A-Z 0-9]+[@][a-z]+[.][a-z]{2,3}/;
+    let pattern2 = /[0-9 A-Z a-z @ # $ % & *]{6,12}/;
     const { name, email, password, reEnterPassword } = user;
     if (name && email && password && password === reEnterPassword) {
-      axios.post("http://localhost:5000/signup", user).then((res) => {
-        alert(res.data.message);
-        navigate("/login");
-      });
+      if (pattern.test(email) && pattern2.test(password)) {
+        axios.post("http://localhost:5000/signup", user).then((res) => {
+          alert(res.data.message);
+          navigate("/login");
+        });
+      } else
+        alert(`invalid email and password \n password should be password>=6`);
     } else {
-      alert("invlid input");
+      alert("invalid input");
     }
   };
 
@@ -43,15 +48,13 @@ const SignUp = () => {
         value={user.name}
         placeholder="Your Name"
         onChange={handleChange}
-        required
       ></input>
       <input
-        type="text"
+        type="email"
         name="email"
         value={user.email}
         placeholder="Your Email"
         onChange={handleChange}
-        required
       ></input>
       <input
         type="password"
@@ -59,7 +62,6 @@ const SignUp = () => {
         value={user.password}
         placeholder="Your Password"
         onChange={handleChange}
-        required
       ></input>
       <input
         type="password"
@@ -67,7 +69,6 @@ const SignUp = () => {
         value={user.reEnterPassword}
         placeholder="Re-enter Password"
         onChange={handleChange}
-        required
       ></input>
       <div className="button" onClick={signup}>
         SignUp

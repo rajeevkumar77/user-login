@@ -33,7 +33,7 @@ const Login = ({ setLoginUser }) => {
     <div className="login">
       <h1>Login</h1>
       <input
-        type="text"
+        type="email"
         name="email"
         value={user.email}
         onChange={handleChange}

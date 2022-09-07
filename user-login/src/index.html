@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let pattern = /[a-z A-Z 0-9]+[@][a-z]+[.][a-z]{2,3}/;
+      let pattern2 = /[0-9 A-Z a-z @ # $ % & *]{6,12}/;
+      console.log(pattern.test("rsbly@gmil.com"));
+      console.log(pattern2.test("dfsddfwe"));
+    </script>
+  </body>
+</html>

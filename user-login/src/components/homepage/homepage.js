@@ -11,7 +11,6 @@ const Homepage = ({ setLoginUser, user }) => {
       setData(res.data);
     });
   }, []);
-
   return (
     <div className="homepage">
       <h1>Logged user = {user}</h1>
