@@ -21,14 +21,17 @@ const Login = ({ setLoginUser }) => {
   };
 
   const login = () => {
-    axios.post("http://localhost:5000/login", user).then((res) => {
-      alert(res.data.message);
-      console.log(res.data.user);
-      setLoginUser(res.data.user);
-      navigate("/");
-    });
+    if (user.email !== "" && user.password !== "") {
+      axios.post("http://localhost:5000/login", user).then((res) => {
+        alert(res.data.message);
+        console.log(res.data.user);
+        setLoginUser(res.data.user);
+        navigate("/");
+      });
+    } else {
+      alert("please input details");
+    }
   };
-
   return (
     <div className="login">
       <h1>Login</h1>
